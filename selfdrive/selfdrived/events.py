@@ -69,7 +69,7 @@ def startup_master_alert(CP: car.CarParams, CS: car.CarState, sm: messaging.SubM
   if "REPLAY" in os.environ:
     branch = "重播"
 
-  return StartupAlert("警告：此分支未經測試", branch, alert_status=AlertStatus.userPrompt)
+  return StartupAlert("輔助駕駛連線完成", branch, alert_status=AlertStatus.userPrompt)
 
 def below_engage_speed_alert(CP: car.CarParams, CS: car.CarState, sm: messaging.SubMaster, metric: bool, soft_disable_time: int, personality) -> Alert:
   return NoEntryAlert(f"行駛速度需高於 {get_display_speed(CP.minEnableSpeed, metric)} 才能啟用")
@@ -762,8 +762,8 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
       "",
       AlertStatus.normal, AlertSize.full,
       Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .2, creation_delay=0.5),
-    ET.USER_DISABLE: ImmediateDisableAlert("倒車檔位"),
-    ET.NO_ENTRY: NoEntryAlert("倒車檔位"),
+    ET.USER_DISABLE: ImmediateDisableAlert("倒車中,注意周圍"),
+    ET.NO_ENTRY: NoEntryAlert("倒車中,注意周圍"),
   },
 
   # 在使用原廠 ACC 的汽車上，汽車可能因各種原因決定取消 ACC。
