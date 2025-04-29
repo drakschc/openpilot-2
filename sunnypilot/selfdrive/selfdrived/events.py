@@ -79,11 +79,11 @@ EVENTS_SP: dict[int, dict[str, Alert | AlertCallbackType]] = {
 
   EventNameSP.silentReverseGear: {
     ET.PERMANENT: Alert(
-      "倒車檔",
+      "倒車中,注意周圍",
       "",
       AlertStatus.normal, AlertSize.full,
       Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .2, creation_delay=0.5),
-    ET.NO_ENTRY: NoEntryAlert("倒車檔"),
+    ET.NO_ENTRY: NoEntryAlert("倒車中,注意周圍"),
   },
 
   EventNameSP.silentDoorOpen: {
@@ -123,7 +123,7 @@ EVENTS_SP: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventNameSP.experimentalModeSwitched: {
-    ET.WARNING: NormalPermanentAlert("已切換實驗模式", duration=1.5)
+    ET.WARNING: NormalPermanentAlert("切換一般/實驗模式", duration=1.5)
   },
 
   EventNameSP.wrongCarModeAlertOnly: {
